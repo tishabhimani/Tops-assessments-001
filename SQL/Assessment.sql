@@ -68,10 +68,13 @@ HAVING COUNT(*)<5;
 
 -- QUESTION : 8 :    Write an SQL query to show all departments along with the number of people in there. 
 SELECT DEPARTMENT,COUNT(*) AS Worker_Count
-FROM worker 
+FROM worker ;
 
 -- QUESTION : 9 :    Write an SQL query to print the name of employees having the highest salary in each department. 
-
-
-
+select First_Name, DEPARTMENT, Salary
+from worker
+where (DEPARTMENT, salary) in (select  DEPARTMENT, max(salary)
+	from worker
+	group by DEPARTMENT)
+order by Salary desc;
 
